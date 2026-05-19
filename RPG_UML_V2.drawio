@@ -1,0 +1,118 @@
+<mxfile host="app.diagrams.net">
+  <diagram name="RPG UML" id="0">
+    <mxGraphModel dx="1168" dy="625" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1654" pageHeight="1169" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="iattack" parent="1" style="swimlane;startSize=46;fontStyle=1;align=center;fillColor=#dae8fc;strokeColor=#6c8ebf;html=1;" value="&lt;&lt;interface&gt;&gt;&lt;br&gt;IAttackStrategy" vertex="1">
+          <mxGeometry height="90" width="240" x="80" y="100" as="geometry" />
+        </mxCell>
+        <mxCell id="iattack_m" parent="iattack" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=6;overflow=hidden;" value="+ CalculateDamage(baseDamage: int): int&#xa;+ GetAttackDescription(): string" vertex="1">
+          <mxGeometry height="44" width="240" y="46" as="geometry" />
+        </mxCell>
+        <mxCell id="melee" parent="1" style="swimlane;startSize=26;fontStyle=1;align=center;fillColor=#dae8fc;strokeColor=#6c8ebf;" value="MeleeAttackStrategy" vertex="1">
+          <mxGeometry height="26" width="220" y="300" as="geometry" />
+        </mxCell>
+        <mxCell id="magic" parent="1" style="swimlane;startSize=26;fontStyle=1;align=center;fillColor=#dae8fc;strokeColor=#6c8ebf;" value="MagicAttackStrategy" vertex="1">
+          <mxGeometry height="26" width="220" x="240" y="300" as="geometry" />
+        </mxCell>
+        <mxCell id="ranged" parent="1" style="swimlane;startSize=26;fontStyle=1;align=center;fillColor=#dae8fc;strokeColor=#6c8ebf;" value="RangedAttackStrategy" vertex="1">
+          <mxGeometry height="26" width="220" x="480" y="300" as="geometry" />
+        </mxCell>
+        <mxCell id="character" parent="1" style="swimlane;startSize=26;fontStyle=1;align=center;fillColor=#fff2cc;strokeColor=#d6b656;" value="Character" vertex="1">
+          <mxGeometry height="220" width="280" x="760" y="160" as="geometry" />
+        </mxCell>
+        <mxCell id="char_f" parent="character" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=6;overflow=hidden;" value="+ Name: string&#xa;+ MaxHealth: int&#xa;+ Health: int&#xa;+ BaseDamage: int&#xa;- _attackStrategy: IAttackStrategy&#xa;- _state: CharacterState" vertex="1">
+          <mxGeometry height="104" width="280" y="26" as="geometry" />
+        </mxCell>
+        <mxCell id="char_sep" parent="character" style="line;strokeColor=#000000;fillColor=none;" value="" vertex="1">
+          <mxGeometry height="8" width="280" y="130" as="geometry" />
+        </mxCell>
+        <mxCell id="char_m" parent="character" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=6;overflow=hidden;" value="+ Attack(target: Character): void&#xa;+ TakeDamage(damage: int): void&#xa;+ SetState(newState: CharacterState): void&#xa;+ IsAlive(): bool&#xa;+ GetStatus(): string" vertex="1">
+          <mxGeometry height="82" width="280" y="138" as="geometry" />
+        </mxCell>
+        <mxCell id="factory" parent="1" style="swimlane;startSize=46;fontStyle=1;align=center;fillColor=#d5e8d4;strokeColor=#82b366;html=1;" value="&lt;&lt;abstract&gt;&gt;&lt;br&gt;CharacterFactory" vertex="1">
+          <mxGeometry height="72" width="260" x="1160" y="100" as="geometry" />
+        </mxCell>
+        <mxCell id="factory_m" parent="factory" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=6;overflow=hidden;fontStyle=2;" value="+ CreateCharacter(name: string): Character" vertex="1">
+          <mxGeometry height="26" width="260" y="46" as="geometry" />
+        </mxCell>
+        <mxCell id="warrior_f" parent="1" style="swimlane;startSize=26;fontStyle=1;align=center;fillColor=#d5e8d4;strokeColor=#82b366;" value="WarriorFactory" vertex="1">
+          <mxGeometry height="26" width="200" x="1060" y="300" as="geometry" />
+        </mxCell>
+        <mxCell id="mage_f" parent="1" style="swimlane;startSize=26;fontStyle=1;align=center;fillColor=#d5e8d4;strokeColor=#82b366;" value="MageFactory" vertex="1">
+          <mxGeometry height="26" width="200" x="1280" y="300" as="geometry" />
+        </mxCell>
+        <mxCell id="rogue_f" parent="1" style="swimlane;startSize=26;fontStyle=1;align=center;fillColor=#d5e8d4;strokeColor=#82b366;" value="RogueFactory" vertex="1">
+          <mxGeometry height="26" width="200" x="1500" y="300" as="geometry" />
+        </mxCell>
+        <mxCell id="state" parent="1" style="swimlane;startSize=46;fontStyle=1;align=center;fillColor=#f8cecc;strokeColor=#b85450;html=1;" value="&lt;&lt;abstract&gt;&gt;&lt;br&gt;CharacterState" vertex="1">
+          <mxGeometry height="150" width="280" x="780" y="520" as="geometry" />
+        </mxCell>
+        <mxCell id="state_f" parent="state" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=6;overflow=hidden;" value="# _character: Character" vertex="1">
+          <mxGeometry height="22" width="280" y="46" as="geometry" />
+        </mxCell>
+        <mxCell id="state_sep" parent="state" style="line;strokeColor=#000000;fillColor=none;" value="" vertex="1">
+          <mxGeometry height="8" width="280" y="68" as="geometry" />
+        </mxCell>
+        <mxCell id="state_m" parent="state" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=6;overflow=hidden;fontStyle=2;" value="+ TakeDamage(damage: int): void&#xa;+ GetAttackModifier(): double&#xa;+ CanAttack(): bool&#xa;+ GetStateDescription(): string" vertex="1">
+          <mxGeometry height="64" width="280" y="76" as="geometry" />
+        </mxCell>
+        <mxCell id="healthy" parent="1" style="swimlane;startSize=26;fontStyle=1;align=center;fillColor=#f8cecc;strokeColor=#b85450;" value="HealthyState" vertex="1">
+          <mxGeometry height="26" width="180" x="480" y="760" as="geometry" />
+        </mxCell>
+        <mxCell id="wounded" parent="1" style="swimlane;startSize=26;fontStyle=1;align=center;fillColor=#f8cecc;strokeColor=#b85450;" value="WoundedState" vertex="1">
+          <mxGeometry height="26" width="180" x="680" y="760" as="geometry" />
+        </mxCell>
+        <mxCell id="critical" parent="1" style="swimlane;startSize=26;fontStyle=1;align=center;fillColor=#f8cecc;strokeColor=#b85450;" value="CriticalState" vertex="1">
+          <mxGeometry height="26" width="180" x="880" y="760" as="geometry" />
+        </mxCell>
+        <mxCell id="dead" parent="1" style="swimlane;startSize=26;fontStyle=1;align=center;fillColor=#f8cecc;strokeColor=#b85450;" value="DeadState" vertex="1">
+          <mxGeometry height="26" width="180" x="1080" y="760" as="geometry" />
+        </mxCell>
+        <mxCell id="e1" edge="1" parent="1" source="melee" style="dashed=1;endArrow=block;endFill=0;" target="iattack">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e2" edge="1" parent="1" source="magic" style="dashed=1;endArrow=block;endFill=0;" target="iattack">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e3" edge="1" parent="1" source="ranged" style="dashed=1;endArrow=block;endFill=0;" target="iattack">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e4" edge="1" parent="1" source="character" style="endArrow=open;endFill=0;" target="iattack" value="_attackStrategy">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e5" edge="1" parent="1" source="character" style="endArrow=open;endFill=0;" target="state" value="_state">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e6" edge="1" parent="1" source="warrior_f" style="endArrow=block;endFill=0;" target="factory">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e7" edge="1" parent="1" source="mage_f" style="endArrow=block;endFill=0;" target="factory">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e8" edge="1" parent="1" source="rogue_f" style="endArrow=block;endFill=0;" target="factory">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e9" edge="1" parent="1" source="factory" style="dashed=1;endArrow=open;endFill=0;" target="character" value="creates">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e10" edge="1" parent="1" source="healthy" style="endArrow=block;endFill=0;" target="state">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e11" edge="1" parent="1" source="wounded" style="endArrow=block;endFill=0;" target="state">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e12" edge="1" parent="1" source="critical" style="endArrow=block;endFill=0;" target="state">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e13" edge="1" parent="1" source="dead" style="endArrow=block;endFill=0;" target="state">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e14" edge="1" parent="1" source="state" style="endArrow=open;endFill=0;" target="character" value="_character">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
