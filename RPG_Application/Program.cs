@@ -8,33 +8,33 @@ namespace RPGCombatSimulator
         {
             Console.WriteLine("=== RPG Combat Simulator ===\n");
 
-            var warriorFactory = new WarriorFactory();
             var mageFactory = new MageFactory();
+            var rogueFactory = new RogueFactory();
 
-            var warrior = warriorFactory.CreateCharacter("Joueur 1");
-            var mage = mageFactory.CreateCharacter("Joueur 2");
+            var mage = mageFactory.CreateCharacter("Mage");
+            var rogue = rogueFactory.CreateCharacter("Rogue");
 
             Console.WriteLine("Combattants :");
-            Console.WriteLine($"  {warrior.GetStatus()}");
             Console.WriteLine($"  {mage.GetStatus()}");
+            Console.WriteLine($"  {rogue.GetStatus()}");
             Console.WriteLine();
 
             int round = 1;
-            while (warrior.IsAlive() && mage.IsAlive())
+            while (mage.IsAlive() && rogue.IsAlive())
             {
                 Console.WriteLine($"=== Tour {round} ===");
-                warrior.Attack(mage);
-                if (mage.IsAlive())
-                    mage.Attack(warrior);
+                mage.Attack(rogue);
+                if (rogue.IsAlive())
+                    rogue.Attack(mage);
                 Console.WriteLine();
                 round++;
             }
 
             Console.WriteLine("=== Combat Finished ===");
-            if (warrior.IsAlive())
-                Console.WriteLine($"Victoire de {warrior.Name} !");
-            else
+            if (mage.IsAlive())
                 Console.WriteLine($"Victoire de {mage.Name} !");
+            else
+                Console.WriteLine($"Victoire de {rogue.Name} !");
         }
     }
 }
